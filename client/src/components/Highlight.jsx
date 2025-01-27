@@ -42,7 +42,7 @@ const Highlight = () => {
   return (
     <section
       id="highlights"
-      className="w-full overflow-hidden h-[100vh] common-padding bg-{#f9f9f9}"
+      className="w-full overflow-hidden h-[100vh] bg-{#f9f9f9}"
     >
       <div className="screen-max-width">
         <h1 id="heading" className="section-heading flex justify-center text-3xl md:text-4xl font-bold font-poppins">

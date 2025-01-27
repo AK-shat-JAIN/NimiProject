@@ -13,6 +13,7 @@
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^9.121.3",
     "@react-three/fiber": "^8.17.12",
+    "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.0.0",
     "gsap": "^3.12.7",
     "react": "^18.3.1",

@@ -2,8 +2,8 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div className="bg-gray-100 py-20 px-5 md:px-20">
-      <div className="grid md:grid-cols-2 gap-8 items-center">
+    <div className="bg-gray-100  md:px-20 w-full overflow-hidden">
+      <div className="grid md:grid-cols-2  gap-8 items-center py-20 ">
       <div>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold font-poppins text-gray-900">
           CRC JOYOUS: JOY OF <br /> Exemplary living

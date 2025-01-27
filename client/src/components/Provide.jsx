@@ -2,9 +2,9 @@ import React from 'react'
 
 const Provide = () => {
   return (
-    <section className='w-full h-[80vh] flex md:flex-row flex-col gap-16 mt-20'> 
+    <section className='w-full h-[80vh] flex md:flex-row flex-col gap-16 mt-20 overflow-hidden'> 
     <div className='flex justify-center items-center'>
-        <img src="/Images/park.png"  alt="park" />
+        <img src="/Images/park.png"  alt="park" className='transform translate-y-4 hover:scale-105 transition-transform duration-500' />
     </div>
     <div className="flex flex-col justify-center gap-4 items-left w-1/2">
     <h3 className='text-[#E58411] uppercase font-medium'>WE PROvIDE</h3>
