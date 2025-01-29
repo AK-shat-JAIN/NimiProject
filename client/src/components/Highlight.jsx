@@ -42,10 +42,10 @@ const Highlight = () => {
   return (
     <section
       id="highlights"
-      className="w-full overflow-hidden h-[100vh] bg-{#f9f9f9}"
+      className="w-full px-10 md:px-20 overflow-hidden h-[70vh] md:h-[100vh] bg-{#f9f9f9}"
     >
       <div className="screen-max-width">
-        <h1 id="heading" className="section-heading flex justify-center text-3xl md:text-4xl font-bold font-poppins">
+        <h1 id="heading" className="section-heading flex justify-center text-2xl md:text-3xl lg:text-4xl font-bold font-poppins">
           Project Plans
         </h1>
 
@@ -55,7 +55,7 @@ const Highlight = () => {
               {sizes.map(({ label, value }) => (
                 <span
                   key={label}
-                  className={`size-btn rounded-full px-6 py-1 cursor-pointer text-sm md:text-base transition-all duration-300 ${
+                  className={`size-btn rounded-full px-6 py-1 cursor-pointer text-[11px] md:text-base transition-all duration-300 ${
                     selectedPlan === value
                       ? "bg-white text-[#1E1E1E] shadow-lg transform scale-105"
                       : "bg-transparent text-[#1E1E1E]"

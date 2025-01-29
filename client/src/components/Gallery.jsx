@@ -29,7 +29,7 @@ const Gallery = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-        <h2 className="font-bold text-6xl p-20">Our Joyous Gallery</h2>
+        <h2 className="font-bold text-2xl md:text-4xl lg:text-6xl p-10 mg:p-20">Our Joyous Gallery</h2>
       <div
         className="w-full carousel-container flex justify-between overflow-x-scroll [&::-webkit-scrollbar]:hidden space-x-4 px-4 "
         ref={carouselRef}

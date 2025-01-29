@@ -5,9 +5,9 @@ const Footer = () => {
     
     <footer className='w-full gap-10 h-auto bg-[#F7F7F7] flex flex-col justify-center px-16 py-8 mt-20 text-[#1E1E1E] font-poppins overflow-hidden '>
         <div className="footer-top">
-        <img src="/Images/logodark.png" alt="logo" />
+        <img src="/Images/logodark.png" className='sm:w-1/12 w-1/6 h-auto' alt="logo" />
         </div>
-        <div className="footer-content flex justify-between text-sm">
+        <div className="footer-content flex flex-col md:flex-row justify-between text-sm">
             <p>CORPORATE OFFICE <br />
                 CRC HOMES PRIVATE LIMITED <br />
                 Ground Floor, Tower A, Plot-5, <br />

@@ -2,11 +2,11 @@ import React from 'react'
 
 const Provide = () => {
   return (
-    <section className='w-full h-[80vh] flex md:flex-row flex-col gap-16 mt-20 overflow-hidden'> 
-    <div className='flex justify-center items-center'>
-        <img src="/Images/park.png"  alt="park" className='transform translate-y-4 hover:scale-105 transition-transform duration-500' />
+    <section className='w-full  flex md:flex-row flex-col gap-8 mt-10 md:mt-20 overflow-hidden'> 
+    <div className='flex justify-center items-center w-1/2 '>
+        <img src="/Images/park.png" alt="park" className=' transform translate-y-4 hover:scale-105 transition-transform duration-500' />
     </div>
-    <div className="flex flex-col justify-center gap-4 items-left w-1/2">
+    <div className="flex flex-col justify-center gap-4 items-left p-10">
     <h3 className='text-[#E58411] uppercase font-medium'>WE PROvIDE</h3>
     <h4 className='text-4xl font-bold'>Best Amenities</h4>
     <ul className='list-disc list-inside line-height-[33px] font-medium text-[#1E1E1E] opacity-80'>
