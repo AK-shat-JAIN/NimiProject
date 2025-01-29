@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="footer-top">
         <img src="/Images/logodark.png" className='sm:w-1/12 w-1/6 h-auto' alt="logo" />
         </div>
-        <div className="footer-content flex flex-col md:flex-row justify-between text-sm">
-            <p>CORPORATE OFFICE <br />
+        <div className="footer-content flex flex-col md:flex-row justify-between text-sm gap-4">
+            <p className='text-[12px] md:text-sm ' >CORPORATE OFFICE <br />
                 CRC HOMES PRIVATE LIMITED <br />
                 Ground Floor, Tower A, Plot-5, <br />
                 Logix Techno Park, Sector -127 Noida,<br />
@@ -19,31 +19,31 @@ const Footer = () => {
 
             </p>
 
-            <div><h3 className='text-[#F6973F] text-lg pb-2 '>Projects</h3>
-            <ul className='list-disc list-inside'><li>Maesta</li>
+            <div><h3 className='text-[#F6973F] text-sm md:text-md lg:text-lg pb-2 '>Projects</h3>
+            <ul className='list-disc list-inside text-[10px] md:text-sm'><li>Maesta</li>
             <li>Joyous</li>
             <li>Sublimis</li>
             <li>Mantra Happy</li>
             <li>Homes</li></ul>
             </div>
 
-            <div><h3 className='text-[#F6973F] text-lg pb-2 '>About</h3>
-            <ul className='list-disc list-inside'><li>About Management</li>
+            <div><h3 className='text-[#F6973F] text-sm md:text-md lg:text-lg pb-2 '>About</h3>
+            <ul className='list-disc list-inside text-[10px] md:text-sm'><li>About Management</li>
             <li>Leadership Team</li>
             <li>Vision & Mission</li>
             <li>FAQs</li>
             <li>Blog</li></ul>
             </div>
 
-            <div><h3 className='text-[#F6973F] text-lg pb-2 '>About</h3>
-            <ul className='list-disc list-inside'><li>Corporate Gallery</li>
+            <div><h3 className='text-[#F6973F] text-sm md:text-md lg:text-lg pb-2 '>About</h3>
+            <ul className='list-disc list-inside text-[10px] md:text-sm'><li>Corporate Gallery</li>
             <li>Video Gallery</li>
             <li>Sublimis Gallery</li>
             <li>Mantra Happy Home Gallery</li>
             <li>Events</li></ul>
             </div>
         </div>
-        <div className="footer-bottom flex text-sm justify-between"><p>Copyrigh 2021</p><div className='flex gap-4'><p>Terms & Condition</p><p>Privacy Policy</p></div></div>
+        <div className="footer-bottom flex text-[10px] md:text-sm justify-between gap-4"><p>Copyright © 2021</p><div className='flex gap-4'><p>Terms & Condition</p><p>Privacy Policy</p></div></div>
 
 
     </footer>
