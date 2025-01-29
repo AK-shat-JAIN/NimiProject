@@ -152,21 +152,7 @@ const FormPopup = ({onClose}) => {
               </div>
             </div>
 
-            {/* Location
-            <div>
-              <label
-                htmlFor="location"
-                className="block text-gray-600 text-xs font-medium mb-1"
-              >
-                Location
-              </label>
-              <input
-                type="text"
-                id="location"
-                placeholder="Enter your location"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-            </div> */}
+           
 
             {/* Checkbox */}
             <div className="flex items-center">

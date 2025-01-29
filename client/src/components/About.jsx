@@ -1,10 +1,60 @@
-import React from 'react'
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const aboutRef = useRef(null);
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const aboutSection = aboutRef.current;
+    const text = textRef.current;
+    const image = imageRef.current;
+
+    gsap.fromTo(
+      text,
+      { opacity: 0, x: -100 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: "top 80%",
+          end: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      image,
+      { opacity: 0, x: 100, scale: 0.9 },
+      {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        duration: 2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: "top 80%",
+          end: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }, []);
+
+
   return (
-    <div className="bg-gray-100 px-10 md:px-20 w-full overflow-hidden">
+    <div ref={aboutRef} className="bg-gray-100 px-10 md:px-20 w-full overflow-hidden">
       <div className="grid md:grid-cols-2  gap-8 items-center py-20 ">
-      <div>
+      <div ref={textRef}>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold font-poppins text-gray-900">
           CRC JOYOUS: JOY OF <br /> Exemplary living
           </h2>
@@ -17,7 +67,7 @@ const About = () => {
 
         <div className="relative">
         
-          <div className="relative  animate-fade-in">
+          <div ref={imageRef} className="relative ">
             
             <img
               src="/Images/Group 48095438.png" 

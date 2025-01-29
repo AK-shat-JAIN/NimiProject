@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import React, { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectPlanView from "./ProjectPlanView";
 import * as THREE from "three";
 
@@ -17,19 +17,70 @@ const Highlight = () => {
   ];
 
   const masterplan = useRef(new THREE.Group());
-  const tower1 = useRef(new THREE.Group());
-  const tower2 = useRef(new THREE.Group());
-  const tower3 = useRef(new THREE.Group());
-  const tower4 = useRef(new THREE.Group());
+  const highlightRef = useRef(null);
+  const headingRef = useRef(null);
+  const buttonRef = useRef(null);
+  const imageRef = useRef(null);
 
-  // GSAP heading animation
-  useGSAP(() => {
+  useEffect(() => {
+    const highlightSection = highlightRef.current;
+    const heading = headingRef.current;
+    const buttons = buttonRef.current;
+    const image = imageRef.current;
     gsap.fromTo(
-      "#heading",
-      { y: "-100%", opacity: 0 },
-      { y: 0, opacity: 1, delay: 0.5 }
+      heading,
+      { y: "-50%", opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: highlightSection,
+          start: "top 80%",
+          end: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Buttons Animation
+    gsap.fromTo(
+      buttons,
+      { opacity: 0, scale: 0.8 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: highlightSection,
+          start: "top 75%",
+          end: "top 55%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Image Animation
+    gsap.fromTo(
+      image,
+      { opacity: 0, scale: 0.9 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 3,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: highlightSection,
+          start: "top 70%",
+          end: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
     );
   }, []);
+
 
   const handleSizeChange = (value) => {
     setSelectedPlan(value);
@@ -41,16 +92,17 @@ const Highlight = () => {
 
   return (
     <section
+      ref={highlightRef}
       id="highlights"
       className="w-full px-10 md:px-20 overflow-hidden h-[70vh] md:h-[100vh] bg-{#f9f9f9}"
     >
       <div className="screen-max-width">
-        <h1 id="heading" className="section-heading flex justify-center text-2xl md:text-3xl lg:text-4xl font-bold font-poppins">
+        <h1 ref={headingRef}  id="heading" className="section-heading flex justify-center text-2xl md:text-3xl lg:text-4xl font-bold font-poppins">
           Project Plans
         </h1>
 
         {/* Buttons Section */}
-        <div className="mx-auto w-full flex justify-center mt-5">
+        <div ref={buttonRef} className="mx-auto w-full flex justify-center mt-5">
             <div className="flex flex-wrap gap-0 bg-[#EEEEEE] p-1 px-1.5 rounded-full">
               {sizes.map(({ label, value }) => (
                 <span
@@ -69,7 +121,7 @@ const Highlight = () => {
           </div>
 
         <div className="flex flex-col items-center mt-3">
-          <div className="w-full h-[60vh] md:h-[70vh] overflow-hidden relative">
+          <div ref={imageRef} className="w-full h-[60vh] md:h-[70vh] overflow-hidden relative">
             <ProjectPlanView
               index={1}
               groupRef={masterplan}

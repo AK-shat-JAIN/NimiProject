@@ -1,24 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Gallery = () => {
+  const galleryRef = useRef(null);
+  const headingRef = useRef(null);
   const carouselRef = useRef(null);
 
-  useEffect(() => {
-    const images = carouselRef.current.querySelectorAll(".carousel-image");
-    gsap.fromTo(
-      images,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-      }
-    );
-  }, []);
-
+  // Duplicate images for infinite scrolling effect
   const carouselImages = [
     "/Images/gallery1.png",
     "/Images/gallery2.png",
@@ -27,31 +18,71 @@ const Gallery = () => {
     "/Images/gallery5.png",
   ];
 
+  // Duplicate images for seamless infinite scrolling
+  const extendedImages = [...carouselImages, ...carouselImages];
+
+  useEffect(() => {
+    const gallery = galleryRef.current;
+    const heading = headingRef.current;
+    const carousel = carouselRef.current;
+
+    // Heading Animation (Fades in from top with slight scale)
+    gsap.fromTo(
+      heading,
+      { opacity: 0, y: -30, scale: 0.9 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: gallery,
+          start: "top 80%",
+          end: "top 60%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Infinite Scrolling Effect
+    gsap.to(carousel, {
+      x: "-50%", // Move to the middle of duplicated images
+      duration: 10, // Adjust speed
+      ease: "linear",
+      repeat: -1,
+      modifiers: {
+        x: gsap.utils.unitize((x) => parseFloat(x) % -carousel.offsetWidth), // Resets scroll seamlessly
+      },
+    });
+  }, []);
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-        <h2 className="font-bold text-2xl md:text-4xl lg:text-6xl p-10 mg:p-20">Our Joyous Gallery</h2>
-      <div
-        className="w-full carousel-container flex justify-between overflow-x-scroll [&::-webkit-scrollbar]:hidden space-x-4 px-4 "
-        ref={carouselRef}
-      >
-        
-        {carouselImages.map((src, index) => (
-          <div
-            key={index}
-            className="carousel-image snap-center relative rounded-lg overflow-hidden shadow-lg hover:scale-105 transform transition duration-300 w-86 flex-shrink-0"
-          >
-            <img
-              src={src}
-              alt={`Carousel Image ${index + 1}`}
-              className="w-full h-[70vh] object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-              <p className="absolute bottom-4 left-4 text-white font-medium">
-                Image {index + 1}
-              </p>
+    <div ref={galleryRef} className="flex flex-col items-center justify-center  bg-gray-50">
+      {/* Heading */}
+      <h2 ref={headingRef} className="font-bold text-2xl md:text-4xl lg:text-6xl p-10 md:p-20 opacity-0">
+        Our Joyous Gallery
+      </h2>
+
+      {/* Carousel Container */}
+      <div className="relative overflow-hidden w-full">
+        <div
+          ref={carouselRef}
+          className="flex space-x-4 px-4 w-max"
+          style={{ whiteSpace: "nowrap" }} // Prevents wrapping
+        >
+          {extendedImages.map((src, index) => (
+            <div
+              key={index}
+              className="carousel-image relative rounded-lg overflow-hidden shadow-lg hover:scale-110 transition-transform duration-500"
+            >
+              <img src={src} alt={`Carousel Image ${index + 1}`} className="w-[300px] h-[200px] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500">
+                <p className="absolute bottom-4 left-4 text-white font-medium">Image {index % 5 + 1}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
