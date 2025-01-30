@@ -36,7 +36,9 @@ const FormPopup = ({onClose}) => {
 
     const response = await dispatch(leadGenerate(formData))
     if(response?.payload?.success){
-      toast.success('Form Submitted Successfully')
+      toast.success('Form Submitted Successfully', {
+        autoClose: 3000
+      })
       navigate('/')
     }
 
