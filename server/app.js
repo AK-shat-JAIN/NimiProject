@@ -15,9 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors(                //this allows us to make requests from the frontend to the backend
     {
         // origin: 'http://localhost:5173/',  //https://damac.onrender.com
-        origin: "https://nimiproject-8sad.onrender.com/",
+        origin: "https://nimiproject-8sad.onrender.com",
         credentials: true,
-        // methods: ["GET", "POST", "PUT", "DELETE"]
+        methods: ["GET", "POST", "PUT", "DELETE"]
     }
 ));    
 // const multer  = require('multer');
