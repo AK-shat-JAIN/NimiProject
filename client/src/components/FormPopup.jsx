@@ -3,69 +3,61 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-// import toast from 'react-hot-toast'
+import toast from 'react-hot-toast'
 
-// import { leadGenerate } from '../Redux/Slices/LeadSlice'
+import { leadGenerate } from '../Redux/Slices/LeadSlice'
 
 const FormPopup = ({onClose}) => {
-//   const dispatch = useDispatch()
-//   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-//   const [formData, setFormData] = useState({
-//     fullName: '',
-//     email: '',
-//     phone: '',
-//   })
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+  })
 
-//   function handleChange(e){
-//     const { name, value } = e.target
-//     setFormData({ 
-//       ...formData,
-//       [name]: value
-//     })
-//     console.log(formData)
-//   }
+  function handleChange(e){
+    const { name, value } = e.target
+    setFormData({ 
+      ...formData,
+      [name]: value
+    })
+    console.log(formData)
+  }
 
-//   async function FormSubmission(e) {
-//     e.preventDefault()
+  async function FormSubmission(e) {
+    e.preventDefault()
     
-//     if(!formData.fullName || !formData.email || !formData.phone){
-//       toast.error('Please fill all the fields')
-//       return;
-//     }
+    if(!formData.fullName || !formData.email || !formData.phone){
+      toast.error('Please fill all the fields')
+      return;
+    }
 
-//     const response = await dispatch(leadGenerate(formData))
-//     if(response?.payload?.success){
-//       toast.success('Form Submitted Successfully')
-//       navigate('/')
-//     }
+    const response = await dispatch(leadGenerate(formData))
+    if(response?.payload?.success){
+      toast.success('Form Submitted Successfully')
+      navigate('/')
+    }
 
-//     setFormData({
-//       fullName: '',
-//       email: '',
-//       phone: '',
-//     })
-//   }
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+    })
+  }
 
   return (
     <div className="bg-black bg-opacity-60 scroll-none sm:p-0 md:p-6 shadow-lg z-50  animate-fade-in fixed  grid h-[100%] w-[100%] place-items-center">
           <form 
-        //   onSubmit={FormSubmission} 
+          onSubmit={FormSubmission} 
           className="bg-white p-5 md:p-10 rounded-lg space-y-4 w-[90vw] md:w-[40vw]  w-max[25vw, 400px] z-50 relative border-solid border-2 border-gray-200">
             <div className="flex justify-between items-center">
               <h2></h2>
               <img onClick={onClose} src="/Images/close.png" alt="close" className='mt-2 w-4 h-4 cursor-pointer rounded-full'/>
             </div>
 
-            <div className="title flex flex-col justify-between ">
-              <h2 className='text-2xl font-semibold text-gray-800 text-center' >
-                {/* {currState} */}
-                Fill the form & Get VIP Access to latest market updates
-                </h2>
-            {/* o */}
             
-
-            </div>
             {/* First Name */}
             <div>
               <label
@@ -82,7 +74,7 @@ const FormPopup = ({onClose}) => {
                 name='fullName'
                 placeholder="Your Full Name"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
-                // onChange={handleChange}
+                onChange={handleChange}
               />
             </div>
 
@@ -117,7 +109,7 @@ const FormPopup = ({onClose}) => {
                 id="email"
                 name='email'
                 placeholder="Your Email Address"
-                // onChange={handleChange}
+                onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
               />
             </div>
@@ -146,7 +138,7 @@ const FormPopup = ({onClose}) => {
                   id="contact"
                   name='phone'
                   placeholder="Phone Number"
-                //   onChange={handleChange}
+                  onChange={handleChange}
                   className="flex-grow w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
                 />
               </div>
