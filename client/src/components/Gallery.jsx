@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -78,7 +78,7 @@ const Gallery = () => {
             >
               <img src={src} alt={`Carousel Image ${index + 1}`} className="w-[300px] h-[200px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500">
-                <p className="absolute bottom-4 left-4 text-white font-medium">Image {index % 5 + 1}</p>
+                <p className="absolute bottom-4 left-4 text-white font-medium"></p>
               </div>
             </div>
           ))}
